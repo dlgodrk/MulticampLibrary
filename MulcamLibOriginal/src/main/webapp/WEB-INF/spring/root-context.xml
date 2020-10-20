@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+	
+	<!-- Root Context: defines shared resources visible to all other web components -->
+	<context:annotation-config />
+	<context:component-scan base-package="biz.*" />
+
+	<!-- BasicDataSource DBCP를이용한설정예시 -->
+	<!-- DataSource JDBC driver를 이용한 Database Connection 구현체이다 -->
+
+	<bean id="dataSource"
+		class="org.apache.commons.dbcp.BasicDataSource"
+		p:driverClassName="oracle.jdbc.OracleDriver"
+		p:url="jdbc:oracle:thin:@localhost:1521:orcl" 
+		p:username="hr"
+		p:password="hr" />
+
+	<!-- Spring의 DAO 프레임워크의 JdbcTemplate 빈 설정 -->
+	<bean id="jdbcTemplete"
+		class="org.springframework.jdbc.core.JdbcTemplate">
+		<constructor-arg ref="dataSource" />
+	</bean>	
+		
+</beans>
