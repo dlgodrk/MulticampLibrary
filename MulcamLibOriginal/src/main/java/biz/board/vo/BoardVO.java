@@ -1,7 +1,7 @@
 package biz.board.vo;
 
 public class BoardVO {
-	// commit test
+	// commit test test2
 	private int boardno;
 	private String title;
 	private String content;
